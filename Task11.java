@@ -1,18 +1,18 @@
 
 
-public class Task {
+public class Task11 {
     
     public static void main(String[] args){
-        System.out.println("Task 10 "+ repeat("moscow",2));
-        System.out.println("Task 11 "+ differenceMaxMin(new int[] {44,32,86,19}));
-        System.out.println("Task 12 "+ isAvgWhole(new int[] {9,2,2,5}));
-        System.out.printf("Task 13 "); cumulativeSum(new int[]{1,2,3});
-        System.out.println("Task 14 "+ getDecimalPlaces("12.001"));
-        System.out.println("Task 15 "+ fibonacci(7));
-        System.out.println("Task 16 "+ isValid("12345"));
-        System.out.println("Task 17 "+ isStrangePair("sssp", "paas"));
-        System.out.println("Task 18 "+ isPrefix("aaaaw", "aa2"));
-        System.out.println("Task 19 "+ isSuffix("aaaaw", "aaw"));
+        System.out.println("Task 11 "+ repeat("moscow",2));
+        System.out.println("Task 12 "+ differenceMaxMin(new int[] {44,32,86,19}));
+        System.out.println("Task 13 "+ isAvgWhole(new int[] {9,2,2,5}));
+        System.out.printf("Task 14 "); cumulativeSum(new int[]{1,2,3});
+        System.out.println("Task 15 "+ getDecimalPlaces("12"));
+        System.out.println("Task 16 "+ fibonacci(7));
+        System.out.println("Task 17 "+ isValid("12345"));
+        System.out.println("Task 18 "+ isStrangePair("sssp", "paas"));
+        System.out.println("Task 19.1 "+ isPrefix("aaa2aw", "aa2-"));
+        System.out.println("Task 19.2 "+ isSuffix("aaaa", "-aa2"));
         System.out.println("Task 20 "+ boxSeq(5));
     }
 
@@ -57,8 +57,8 @@ public class Task {
 
     public static int getDecimalPlaces(String number){
         String[] splitter = String.valueOf(number).split("\\.");
-        int i = splitter[1].length();
-        return i;
+        if (splitter.length == 1) return 0;
+        return splitter[1].length();
     }
 
     public static int fibonacci(int number){
@@ -80,11 +80,11 @@ public class Task {
     }
 
     public static boolean isPrefix(String word, String prefix){
-        return word.substring(0,prefix.length()).equals(prefix) ;
+        return word.substring(0,prefix.length()-1).equals(prefix.substring(0,prefix.length()-1)) ;
     }
 
     public static boolean isSuffix(String word, String suffix){
-        return  word.substring(word.length()-suffix.length(),word.length()).equals(suffix);
+        return  word.substring(word.length()-suffix.length()+1,word.length()).equals(suffix.substring(1,suffix.length()));
     }
 
     public static int boxSeq(int n){

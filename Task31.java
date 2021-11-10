@@ -168,12 +168,7 @@ public class Task31 {
             }
 
         }
-         if (sNum==fNum){
-             return true;
-         }
-         else{
-             return false;
-         }
+         return sNum==fNum;
     }
 
     public static boolean trouble(int num1, int num2){
