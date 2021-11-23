@@ -36,10 +36,7 @@ public class Task51 {
     }
 
     public static boolean validColor(String string){
-        int i = 0;
-        while ( i < string.length() && string.charAt(i) != '('){
-            i++;
-        }
+        int i = string.indexOf("(");
         String[] split = string.substring(i+1,string.length()-1).split(",");
         if (string.substring(0,i).equals("rgb") && split.length==3){
             for (int j = 0; j < split.length; j++) {
@@ -51,7 +48,6 @@ public class Task51 {
         }
         if(string.substring(0,i).equals("rgba")  && split.length==4){
             if (Integer.parseInt(split[split.length-1]) < 0 && Integer.parseInt(split[split.length-1]) > 1){
-                System.out.println("////");
                 return false;
             }
             for (int j = 0; j < split.length-1; j++) {
