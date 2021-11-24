@@ -113,7 +113,7 @@ public class Task41 {
     }
 
     public static ArrayList<String> sameVowelGroup(String[] strs) {
-        String[] allVowels = new String[]{"a", "e", "y", "u", "i", "o"};
+        String[] allVowels = new String[]{"a", "e", "u", "i", "o"};
         String vowels = "";
         ArrayList<String> result = new ArrayList<>();
         for (int i = 0; i < allVowels.length; i++) {

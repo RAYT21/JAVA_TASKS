@@ -24,14 +24,19 @@ public class Task21 {
     }
 
     public static int findZip(String string, String subString, int n) {
-        ArrayList<Integer> entryPos = new ArrayList<>();
+        int entryPos=0;
+        int stX =0;
         for (int i = 0; i < string.length()-subString.length(); i++) {
-            if (string.substring(i,i+subString.length()).equals(subString)){
-               entryPos.add(i);
+            stX= string.indexOf(subString, stX + 1);
+            if (stX == -1){
+                return -1;
+            }
+            entryPos++;
+            if (entryPos == n){
+                return stX;
             }
         }
-        if (entryPos.size() >= n){return entryPos.get(n-1);}
-        else return -1;
+        return -1;
     }
 
     private static boolean checkPerfect(int n){
@@ -67,9 +72,6 @@ public class Task21 {
                 diffArr1.add(i);
             }
         }
-        if(diffArr1.size() == 1) diffValues1 = 0;
-        else diffValues1 = diffArr1.size();
-
         int diffValues2;
         ArrayList<Integer> diffArr2 = new ArrayList<>();
         for (int i : arr2) {
@@ -77,10 +79,8 @@ public class Task21 {
                 diffArr2.add(i);
             }
         }
-        if(diffArr2.size() == 1)diffValues2 = 0;
-        else diffValues2 = diffArr2.size();
 
-        return diffValues1 == diffValues2;
+        return diffArr1.size() == diffArr2.size();
     }
 
     public static boolean isKaprekar(int n){

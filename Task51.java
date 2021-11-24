@@ -4,15 +4,16 @@ public class Task51 {
 
     public static void main(String[] args) {
         System.out.println("Task51: " + bell(2));
-        System.out.println("Task52: "+ translateWord("shimp"));
+        System.out.println("Task52: "+ translateWord("shimp")); // доделать
+        // написать для строки
         System.out.println("Task53: "+ validColor("rgba(0,0,0,0)"));
         System.out.println("Task54: "+ stripUrlParams("https://vk.com?a=1&b=2&a=2","b"));
-        System.out.println("Task55: "+ Arrays.toString(getHashTags("Whya Jimmi You, So, Boorrow")));
+        System.out.println("Task55: "+ Arrays.toString(getHashTags("Whya Jimmi You, So, Boorrow"))); //подкумать как переделать
         System.out.println("Task56: "+ ulam(206));
         System.out.println("Task57: "+ longest("abscaaaaa"));
-        System.out.println("Task58: "+convertToRoman(300));
-        System.out.println("Task59: "+formula("10 * 5 = 50 = 35 + 15  + 13"));
-        System.out.println("Task60: "+polindrome(112111230L));
+        System.out.println("Task58: "+ convertToRoman(300));
+        System.out.println("Task59: "+ formula("10 * 5 = 50 = 35 + 15  + 13"));
+        System.out.println("Task60: "+ polindrome(112111230L));
     }
 
     public static int bell(int n) {
@@ -28,6 +29,7 @@ public class Task51 {
     }
 
     public static String translateWord(String string){
+        if (string.isEmpty()) return "incorrect";
         String consonantsEnglish = "qwrtplkjhgfdszxcvbnm";
         if (consonantsEnglish.indexOf(Character.toLowerCase(string.charAt(0))) != -1) {
             return string.substring(1)+string.charAt(0)+"ay";
