@@ -1,14 +1,16 @@
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Task51 {
 
     public static void main(String[] args) {
         System.out.println("Task51: " + bell(2));
-        System.out.println("Task52: "+ translateWord("shimp")); // доделать
-        // написать для строки
+        System.out.println("Task52.1: "+ translateWord("ashimp"));
+        System.out.println("Task52.2: " + translateSentence("Somewhere it's raining, and somewhere I'm walking"));
         System.out.println("Task53: "+ validColor("rgba(0,0,0,0)"));
         System.out.println("Task54: "+ stripUrlParams("https://vk.com?a=1&b=2&a=2","b"));
-        System.out.println("Task55: "+ Arrays.toString(getHashTags("Whya Jimmi You, So, Boorrow"))); //подкумать как переделать
+        System.out.println("Task55: "+ Arrays.toString(getHashTags("Whya Jimmi You, So, Boorrow")));
         System.out.println("Task56: "+ ulam(206));
         System.out.println("Task57: "+ longest("abscaaaaa"));
         System.out.println("Task58: "+ convertToRoman(300));
@@ -28,13 +30,39 @@ public class Task51 {
         return bellTriangle[n][0];
     }
 
-    public static String translateWord(String string){
-        if (string.isEmpty()) return "incorrect";
-        String consonantsEnglish = "qwrtplkjhgfdszxcvbnm";
-        if (consonantsEnglish.indexOf(Character.toLowerCase(string.charAt(0))) != -1) {
-            return string.substring(1)+string.charAt(0)+"ay";
+    public static String translateWord(String word) {
+        if (word.equals("")) {
+            return "";
         }
-        return string+"yay";
+        String vowels = "aeiouAEIOU";
+        if (vowels.contains(word.charAt(0) + "")) {
+            word += "yay";
+        } else {
+            for (int i = 0; i < word.length(); i++) {
+                if (vowels.contains(word.charAt(i) + "")) {
+                    word = word.substring(i) + word.substring(0, i) + "ay";
+                    break;
+                }
+            }
+        }
+
+        return word;
+    }
+
+    public static String translateSentence(String s) {
+        if (s.equals("")) {
+            return "";
+        }
+
+        s = s.toLowerCase();
+
+        Pattern patt = Pattern.compile("[^ ,.!?]*");
+        Matcher matcher = patt.matcher(s);
+        while (matcher.find()) {
+            s = s.replace(matcher.group(), translateWord(matcher.group()));
+        }
+
+        return s.substring(0, 1).toUpperCase() + s.substring(1);
     }
 
     public static boolean validColor(String string){
